@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "QuickNum Copy",
+  "version": "1.6",
+  "description": "Copy WhatsApp chat number By Mohamed Abdou",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "copy-number": {
+      "suggested_key": {
+        "default": "Alt+1"
+      },
+      "description": "Alt+1 to Copy the number from the active chat"
+    }
+  }
+}
