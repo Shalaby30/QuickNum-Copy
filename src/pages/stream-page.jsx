@@ -136,7 +136,9 @@ const StreamPage = () => {
               src={currentStream.embedUrl}
               className="w-full h-full"
               allowFullScreen
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
+              referrerPolicy="no-referrer-when-downgrade"
+              crossOrigin="anonymous"
               title={`Stream ${currentStream.streamNo}`}
             />
           </div>
