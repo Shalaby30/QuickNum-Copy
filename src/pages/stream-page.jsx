@@ -136,7 +136,7 @@ const StreamPage = () => {
               src={currentStream.embedUrl}
               className="w-full h-full"
               allowFullScreen
-              allow="autoplay; fullscreen"
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
               title={`Stream ${currentStream.streamNo}`}
             />
           </div>
