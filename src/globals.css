@@ -2,36 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --radius: 0.5rem;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap');
 
-  --background: 240 10% 3.9%;
+:root {
+  --radius: 0.75rem;
+
+  --background: 0 0% 3%;
   --foreground: 0 0% 98%;
 
-  --card: 240 10% 3.9%;
+  --card: 0 0% 6%;
   --card-foreground: 0 0% 98%;
 
-  --popover: 240 10% 3.9%;
+  --popover: 0 0% 6%;
   --popover-foreground: 0 0% 98%;
 
-  --primary: 142.1 70.6% 45.3%;
-  --primary-foreground: 144.9 80.4% 10%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
 
-  --secondary: 240 3.7% 15.9%;
+  --secondary: 0 0% 15%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 64%;
 
-  --accent: 240 3.7% 15.9%;
+  --accent: 0 0% 20%;
   --accent-foreground: 0 0% 98%;
 
-  --destructive: 0 62.8% 30.6%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 142.1 70.6% 45.3%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 0 0% 98%;
 }
 
 * {
@@ -39,7 +41,12 @@
 }
 
 body {
-  @apply bg-background text-foreground;
+  @apply bg-background text-foreground antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Outfit', system-ui, sans-serif;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -51,11 +58,39 @@ body {
   scrollbar-width: none;
 }
 
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-white/[0.08];
+  }
 
+  .glass-hover {
+    @apply hover:bg-card/80 hover:border-primary/30 transition-all duration-300;
+  }
 
-@layer base {}
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400;
+  }
 
+  .mesh-bg {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, hsl(0 0% 98% / 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, hsl(0 0% 70% / 0.05), transparent),
+      radial-gradient(ellipse 50% 30% at 0% 100%, hsl(0 0% 50% / 0.03), transparent);
+  }
 
+  .glow-primary {
+    box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.15);
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-foreground flex items-center gap-3;
+  }
+
+  .section-title::before {
+    content: '';
+    @apply inline-block w-1 h-7 bg-gradient-to-b from-white to-gray-500 rounded-full;
+  }
+}
 
 @layer base {
   * {
@@ -65,4 +100,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-

@@ -1,32 +1,18 @@
-import { useState, useEffect } from 'react'
-
-const lyrics = [
-  "And I just blame everything on you At least you know that's what I'm good at",
-  "Cause I always find something wrong",
-  "See, you been puttin' up with my shit just way too long",
-  "I'm so gifted at finding what I don't like the most",
-  "Run away from me, baby",
-  "Run away",
-  "Why can't she just, run away?",
-  "Run away as fast as you can",
-  "Here's the fool plan Run away as fast as you, as you can",
-  "I need you to run right back to me, baby"
-]
+import { Link } from "react-router-dom"
 
 const Footer = () => {
-  const [lyric, setLyric] = useState('')
-
-  useEffect(() => {
-    setLyric(lyrics[Math.floor(Math.random() * lyrics.length)])
-  }, [])
-
   return (
-    <footer className="bg-black text-white py-4 text-center">
-      <p className="text-sm italic">{lyric}</p>
-      <p className="text-xs mt-2">© 2025 Sports Stream. All rights reserved.</p>
+    <footer className="border-t border-white/[0.06] px-4 sm:px-6 py-4 shrink-0">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
+        <p>© {new Date().getFullYear()} Streamz</p>
+        <div className="flex gap-4">
+          <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+          <Link to="/live" className="hover:text-primary transition-colors">Live</Link>
+          <Link to="/schedule" className="hover:text-primary transition-colors">Schedule</Link>
+        </div>
+      </div>
     </footer>
   )
 }
 
 export default Footer
-
